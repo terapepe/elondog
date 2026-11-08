@@ -26,19 +26,26 @@ window.EDOG_CONFIG = {
   mode: "single",
   singleNetwork: "robinhood",
 
+  /**
+   * $EDOG contract addresses — edit ONLY here.
+   *  evm = one address shared by every EVM network (Robinhood, Base, BSC)
+   *  sol = Solana mint
+   * Leave "" until deployed → shown as "Coming soon".
+   */
+  token: {
+    evm: "0x3fbb8d2203b96dd393eca84a987c9cc453d45a66",
+    sol: "",
+  },
+
   /** Network shown first + used for wallet login by default (multi mode). */
   primaryNetwork: "solana",
 
-  /**
-   * Contract address per network. Leave "" until deployed → shown as "Coming soon".
-   * Total supply / holder balance are read live on-chain from these addresses.
-   */
+  /** Network settings. Total supply / holder balance are read live on-chain using token.evm / token.sol. */
   networks: {
     solana: {
       name: "Solana",
       short: "Solana",
       type: "solana",
-      ca: "",
       rpcUrls: ["https://api.mainnet-beta.solana.com"],
       explorer: "https://solscan.io/token/",
       explorerAddr: "https://solscan.io/account/",
@@ -52,7 +59,6 @@ window.EDOG_CONFIG = {
       name: "Robinhood Chain",
       short: "Robinhood",
       type: "evm",
-      ca: "0x3fbb8d2203b96dd393eca84a987c9cc453d45a66",
       chainId: 4663,
       nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
       rpcUrls: ["https://rpc.mainnet.chain.robinhood.com"],
@@ -68,7 +74,6 @@ window.EDOG_CONFIG = {
       name: "Base",
       short: "Base",
       type: "evm",
-      ca: "",
       chainId: 8453,
       nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
       rpcUrls: ["https://mainnet.base.org"],
@@ -84,7 +89,6 @@ window.EDOG_CONFIG = {
       name: "BNB Smart Chain",
       short: "BSC",
       type: "evm",
-      ca: "",
       chainId: 56,
       nativeCurrency: { name: "BNB", symbol: "BNB", decimals: 18 },
       rpcUrls: ["https://bsc-dataseed.bnbchain.org"],

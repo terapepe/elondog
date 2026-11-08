@@ -15,7 +15,8 @@
     get(id) { const n = CFG.networks[id]; return n ? { id, ...n } : null; },
     byChainId(cid) { return Chain.list().find((n) => n.type === "evm" && n.chainId === Number(cid)) || null; },
     hex(cid) { return "0x" + Number(cid).toString(16); },
-    ca(id) { return (CFG.networks[id] && CFG.networks[id].ca || "").trim(); },
+    /** EVM networks share token.evm, Solana uses token.sol. */
+    ca(id) { const n = CFG.networks[id]; return n ? ((n.type === "solana" ? CFG.token.sol : CFG.token.evm) || "").trim() : ""; },
 
     explorerToken(id) { const n = CFG.networks[id], a = Chain.ca(id); return n && a ? n.explorer + a : ""; },
     explorerAddr(id, addr) { const n = CFG.networks[id]; return n && addr ? n.explorerAddr + addr : ""; },

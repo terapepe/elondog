@@ -14,7 +14,7 @@
   };
 
   const GALLERY = [
-    { src: "assets/img/edog-face.webp", title: "Captain EDOG" },
+    { src: "assets/img/13d5502f-34b2-4199-ac70-5bf27aae3848.png", title: "Captain EDOG" },
     { src: "assets/art/to-the-moon.svg", title: "To the moon" },
     { src: "assets/art/moon-landing.svg", title: "Moon landing" },
     { src: "assets/art/mars-mission.svg", title: "Mars mission" },

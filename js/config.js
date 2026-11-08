@@ -23,7 +23,7 @@ window.EDOG_CONFIG = {
    *  "multi"  = 4 networks (Solana, Robinhood, Base, BSC)
    *  "single" = 1 network only (singleNetwork), Robinhood-themed layout
    */
-  mode: "multi",
+  mode: "single",
   singleNetwork: "robinhood",
 
   /** Network shown first + used for wallet login by default (multi mode). */

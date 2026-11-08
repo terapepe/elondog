@@ -19,28 +19,18 @@ window.EDOG_CONFIG = {
   },
 
   /**
-   * Site mode:
-   *  "multi"  = 4 networks (Solana, Robinhood, Base, BSC)
-   *  "single" = 1 network only (singleNetwork), Robinhood-themed layout
+   *  "multi"
+   *  "single"
    */
   mode: "single",
   singleNetwork: "robinhood",
 
-  /**
-   * $EDOG contract addresses — edit ONLY here.
-   *  evm = one address shared by every EVM network (Robinhood, Base, BSC)
-   *  sol = Solana mint
-   * Leave "" until deployed → shown as "Coming soon".
-   */
   token: {
     evm: "",
     sol: "",
   },
 
-  /** Network shown first + used for wallet login by default (multi mode). */
   primaryNetwork: "solana",
-
-  /** Network settings. Total supply / holder balance are read live on-chain using token.evm / token.sol. */
   networks: {
     solana: {
       name: "Solana",

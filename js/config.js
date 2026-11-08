@@ -33,7 +33,7 @@ window.EDOG_CONFIG = {
    * Leave "" until deployed → shown as "Coming soon".
    */
   token: {
-    evm: "0x9be01e74e10ffbe724b82f95753c930135019a1e",
+    evm: "",
     sol: "",
   },
 

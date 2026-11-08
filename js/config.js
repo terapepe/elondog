@@ -15,7 +15,7 @@ window.EDOG_CONFIG = {
   social: {
     x: "https://x.com/ElonDog_Xyz",
     xHandle: "@ElonDog_Xyz",
-    telegram: "", // e.g. "https://t.me/..."
+    telegram: "",
   },
 
   /**
@@ -52,7 +52,7 @@ window.EDOG_CONFIG = {
       name: "Robinhood Chain",
       short: "Robinhood",
       type: "evm",
-      ca: "",
+      ca: "0x3fbb8d2203b96dd393eca84a987c9cc453d45a66",
       chainId: 4663,
       nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
       rpcUrls: ["https://rpc.mainnet.chain.robinhood.com"],

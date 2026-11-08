@@ -17,12 +17,12 @@ window.EDOG_CONFIG = {
    *  "multi"
    *  "single"
    */
-  mode: "single",
+  mode: "multi",
   singleNetwork: "robinhood",
 
   token: {
-    evm: "",
-    sol: "",
+    evm: "0xF332edcA75B9D2530dC6b4F3B2AE0dfD3D1Da6Ea",
+    sol: "3DFGspEiE85C5akHdR4MrVSGWdFAy6TeRQENyfVDm6ea",
   },
 
   primaryNetwork: "solana",

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ELON DOG ($EDOG) — The goodest boy in the galaxy</title>
+  <meta name="description" content="ELON DOG ($EDOG) — a community meme coin on Solana, Robinhood Chain, Base and BSC. Shiba astronaut, to the moon.">
+  <meta property="og:title" content="ELON DOG ($EDOG)">
+  <meta property="og:description" content="The goodest boy in the galaxy. Solana · Robinhood · Base · BSC.">
+  <meta property="og:image" content="assets/img/og.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="assets/art/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="starfield" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#top"><img src="assets/art/logo.svg" alt="" width="40" height="40"><span>ELON DOG</span></a>
+    <nav class="nav" id="nav">
+      <a href="#about">About</a>
+      <a href="#chains">Chains</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#buy">How to buy</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="top-actions">
+      <a class="icon-btn" data-x-link target="_blank" rel="noopener" aria-label="X">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.8l-5.3-6.9L4.8 22H1.7l8.1-9.3L1 2h7l4.8 6.3L18.9 2zm-1.2 18h1.9L7.4 3.9H5.4L17.7 20z"/></svg>
+      </a>
+      <button class="btn btn-buy" data-action="open-buy">Buy $EDOG</button>
+      <button class="btn btn-ghost" id="walletBtn" data-action="open-connect">Connect</button>
+      <button class="icon-btn burger" data-action="toggle-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero wrap">
+      <div class="hero-text">
+        <span class="kicker">Solana · Robinhood · Base · BSC</span>
+        <h1>ELON<br><span class="gold">DOG</span></h1>
+        <p class="lead">The goodest boy in the galaxy. <b>$EDOG</b> is a community meme coin powered by one Shiba astronaut and a whole lot of rocket fuel.</p>
+
+        <div class="ca-box" id="caBox">
+          <div class="ca-tabs" id="caTabs" role="tablist"></div>
+          <div class="ca-label">Contract Address <span id="caNet"></span></div>
+          <div class="ca-row">
+            <code class="ca-value" id="caValue">—</code>
+            <button class="btn btn-primary" id="caCopy" data-action="copy-ca">Copy CA</button>
+          </div>
+          <div class="ca-links" id="caLinks"></div>
+        </div>
+
+        <div class="hero-cta">
+          <button class="btn btn-buy btn-lg" data-action="open-buy">Buy $EDOG</button>
+          <a class="btn btn-ghost btn-lg" data-x-link target="_blank" rel="noopener">Follow <span data-x-handle></span></a>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="orbit o1"><span class="planet p-sol"></span></div>
+        <div class="orbit o2"><span class="planet p-base"></span></div>
+        <div class="orbit o3"><span class="planet p-bsc"></span></div>
+        <div class="orbit o4"><span class="planet p-rh"></span></div>
+        <div class="hero-helmet">
+          <img src="assets/img/edog-face.webp" alt="ELON DOG — Shiba astronaut" width="600" height="600">
+        </div>
+        <img class="float-coin c1" src="assets/art/logo.svg" alt="">
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+    <!-- ABOUT -->
+    <section class="wrap section about" id="about">
+      <div class="about-art">
+        <img src="assets/art/moon-landing.svg" alt="ELON DOG on the moon" loading="lazy">
+      </div>
+      <div>
+        <span class="kicker">Mission brief</span>
+        <h2 class="section-title">Who is ELON DOG?</h2>
+        <p>Every rocket needs a co-pilot. ELON DOG is the Shiba astronaut who never misses a launch — helmet on, tail wagging, eyes locked on the moon.</p>
+        <p>Born from internet meme culture and a love for space, <b>$EDOG</b> is a community-driven token living on four chains at once: <b>Solana, Robinhood Chain, Base and BNB Smart Chain</b>. One dog, one ticker, four launchpads.</p>
+        <ul class="ticks">
+          <li>Community first — memes, raids and good vibes</li>
+          <li>Multichain — pick the chain you already use</li>
+          <li>Transparent — every CA is verifiable on-chain</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CHAINS -->
+    <section class="wrap section" id="chains">
+      <div class="section-head">
+        <span class="kicker">4 launchpads</span>
+        <h2 class="section-title">One dog. Four chains.</h2>
+        <p class="muted">Contract addresses and supply are read live from each network. Only trust CAs shown here and on <span data-x-handle></span>.</p>
+      </div>
+      <div class="chain-grid" id="chainGrid"></div>
+    </section>
+
+    <!-- TOKENOMICS -->
+    <section class="wrap section" id="tokenomics">
+      <div class="section-head">
+        <span class="kicker">Fuel tank</span>
+        <h2 class="section-title">Tokenomics</h2>
+      </div>
+      <div class="toko">
+        <div class="toko-art"><img src="assets/art/coin-shower.svg" alt="" loading="lazy"></div>
+        <div class="toko-cards" id="tokoCards"></div>
+      </div>
+    </section>
+
+    <!-- HOW TO BUY -->
+    <section class="wrap section" id="buy">
+      <div class="section-head">
+        <span class="kicker">Pre-flight checklist</span>
+        <h2 class="section-title">How to buy $EDOG</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><h4>Get a wallet</h4><p>Phantom, Solflare or Backpack for Solana. MetaMask, Rabby or Coinbase Wallet for Robinhood Chain, Base and BSC.</p></div>
+        <div class="step"><span class="n">2</span><h4>Add fuel</h4><p>Fund your wallet with SOL, ETH (Robinhood / Base) or BNB (BSC) from an exchange or bridge.</p></div>
+        <div class="step"><span class="n">3</span><h4>Copy the CA</h4><p>Copy the official $EDOG contract address for your chain from the top of this page.</p></div>
+        <div class="step"><span class="n">4</span><h4>Swap &amp; HODL</h4><p>Swap on Jupiter, Uniswap or PancakeSwap — use the Buy button and we'll open the right DEX for you.</p></div>
+      </div>
+      <div class="center"><button class="btn btn-buy btn-lg" data-action="open-buy">Buy $EDOG now</button></div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="wrap section" id="gallery">
+      <div class="section-head">
+        <span class="kicker">Captain's log</span>
+        <h2 class="section-title">ELON DOG Gallery</h2>
+        <p class="muted">Free to use for memes. Click to view full size.</p>
+      </div>
+      <div class="gallery" id="gallery-grid"></div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="wrap section" id="roadmap">
+      <div class="section-head">
+        <span class="kicker">Flight plan</span>
+        <h2 class="section-title">Roadmap</h2>
+      </div>
+      <div class="roadmap">
+        <div class="phase"><span class="tag">Phase 1</span><h4>Ignition</h4><ul><li>Launch $EDOG</li><li>Website &amp; socials</li><li>First 1,000 holders</li></ul><img src="assets/art/to-the-moon.svg" alt="" loading="lazy"></div>
+        <div class="phase"><span class="tag">Phase 2</span><h4>Orbit</h4><ul><li>Live on 4 chains</li><li>Community meme contests</li><li>Trackers &amp; listings</li></ul><img src="assets/art/multichain.svg" alt="" loading="lazy"></div>
+        <div class="phase"><span class="tag">Phase 3</span><h4>Moon</h4><ul><li>Community growth campaigns</li><li>Partnerships</li><li>Bigger rockets</li></ul><img src="assets/art/mars-mission.svg" alt="" loading="lazy"></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="wrap section" id="faq">
+      <div class="section-head">
+        <span class="kicker">Ground control</span>
+        <h2 class="section-title">FAQ</h2>
+      </div>
+      <div class="faq">
+        <details><summary>What is $EDOG?</summary><p>ELON DOG ($EDOG) is a community meme coin featuring a Shiba astronaut mascot. It has no intrinsic value or expectation of financial return.</p></details>
+        <details><summary>Which chains is $EDOG on?</summary><p>Solana, Robinhood Chain, Base and BNB Smart Chain. Each chain has its own contract address — always pick the CA for the chain you are buying on.</p></details>
+        <details><summary>How do I connect my wallet?</summary><p>Click <b>Connect</b>, choose a network, then choose your wallet. EVM wallets are switched to the right network automatically. Your $EDOG balance is read live from the chain.</p></details>
+        <details><summary>How do I avoid fake tokens?</summary><p>Only use the contract addresses shown on this site and on our official X account <span data-x-handle></span>. Never share your seed phrase — we will never DM you first.</p></details>
+        <details><summary>Is ELON DOG affiliated with Elon Musk?</summary><p>No. ELON DOG is an independent community meme project and is not affiliated with, endorsed by, or connected to Elon Musk, SpaceX, Tesla or X Corp.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="brand"><img src="assets/art/logo.svg" alt="" width="36" height="36"><span>ELON DOG</span></div>
+      <div class="footer-links"><a data-x-link target="_blank" rel="noopener"><span data-x-handle></span></a><a id="tgLink" target="_blank" rel="noopener" hidden>Telegram</a></div>
+      <p class="disclaimer">$EDOG is a meme coin with no intrinsic value or expectation of financial return. It is not affiliated with, endorsed by, or connected to Elon Musk, SpaceX, Tesla or X Corp. Nothing on this site is financial advice. Crypto is volatile — only use what you can afford to lose.</p>
+      <p class="muted small">© <span id="year"></span> ELON DOG community</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-backdrop" data-action="close-modal"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" data-action="close-modal" aria-label="Close">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/chain.js"></script>
+  <script src="js/wallet.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

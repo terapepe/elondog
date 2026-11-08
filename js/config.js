@@ -21,7 +21,7 @@ window.EDOG_CONFIG = {
   singleNetwork: "robinhood",
 
   token: {
-    evm: "0xf138b7dd280a83afd75d9047656f8242e0f36201",
+    evm: "",
     sol: "",
   },
 

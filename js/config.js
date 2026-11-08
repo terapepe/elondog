@@ -1,8 +1,3 @@
-/**
- * ELON DOG ($EDOG) — site configuration.
- * Edit this file only: CA per network, socials, tokenomics text.
- * Empty values are hidden on the site (no placeholder data is ever shown).
- */
 window.EDOG_CONFIG = {
   project: {
     name: "ELON DOG",
@@ -26,7 +21,7 @@ window.EDOG_CONFIG = {
   singleNetwork: "robinhood",
 
   token: {
-    evm: "",
+    evm: "0x3b3b0c5e5b584a3d9c790c19300b7b3f23157777",
     sol: "",
   },
 

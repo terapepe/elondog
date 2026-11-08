@@ -14,6 +14,8 @@ Static site (HTML/CSS/vanilla JS, no build step). Networks: **Solana, Robinhood 
 
 | Key | Purpose |
 |---|---|
+| `mode` | `"multi"` = 4 networks · `"single"` = only `singleNetwork` (Robinhood layout & lime theme) |
+| `singleNetwork` | Network used in single mode (default `robinhood`) |
 | `networks.<id>.ca` | $EDOG contract address per network (`""` = "Coming soon") |
 | `networks.<id>.rpcUrls / explorer / buyUrl` | Network settings (`{ca}` is replaced in `buyUrl`) |
 | `primaryNetwork` | Tab shown first in the CA box and wallet picker |

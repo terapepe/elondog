@@ -21,14 +21,14 @@
     { src: "assets/art/diamond-paws.svg", title: "Diamond paws" },
     { src: "assets/art/green-candles.svg", title: "Green candles" },
     { src: "assets/art/coin-shower.svg", title: "Coin shower" },
-    { src: "assets/art/multichain.svg", title: "4 chains, 1 dog" },
+    { src: "assets/art/multichain.svg", title: "4 chains, 1 dog", multiOnly: true },
     { src: "assets/art/spacewalk.svg", title: "Spacewalk" },
     { src: "assets/art/hodl-nap.svg", title: "Just HODL" },
     { src: "assets/art/portrait.svg", title: "Portrait" },
   ];
 
   const App = {
-    caNet: CFG.primaryNetwork,
+    caNet: Chain.primary(),
 
     toast(msg) {
       const t = $("#toast"); t.textContent = msg; t.hidden = false;
@@ -52,13 +52,14 @@
       document.querySelectorAll("[data-x-handle]").forEach((s) => (s.textContent = CFG.social.xHandle));
       if (CFG.social.telegram) { const tg = $("#tgLink"); tg.href = CFG.social.telegram; tg.hidden = false; }
       $("#year").textContent = new Date().getFullYear();
-      const words = ["$EDOG", "TO THE MOON", "SOLANA", "ROBINHOOD", "BASE", "BSC", "DIAMOND PAWS", "JUST HODL", "GOODEST BOY"];
+      const words = ["$EDOG", "TO THE MOON", ...Chain.list().map((n) => n.name.toUpperCase()), "DIAMOND PAWS", "JUST HODL", "GOODEST BOY"];
       const line = words.map((w) => `<span>${w}</span><img src="assets/art/logo.svg" alt="">`).join("");
       $("#marquee").innerHTML = line + line;
     },
 
     /* ---------- Hero CA box ---------- */
     renderCA() {
+      $("#caTabs").hidden = Chain.list().length < 2;
       $("#caTabs").innerHTML = Chain.list().map((n) => `<button role="tab" class="ca-tab ${n.id === this.caNet ? "active" : ""}" style="--net:${n.color}" data-action="ca-tab" data-net="${n.id}">
         <img src="${n.icon}" alt="">${esc(n.short)}</button>`).join("");
       const n = Chain.get(this.caNet), ca = Chain.ca(this.caNet);
@@ -101,16 +102,20 @@
       const live = supplies.filter(([, v]) => v !== null);
       const cards = [];
       if (live.length) {
-        const [id, v] = live.find(([i]) => i === CFG.primaryNetwork) || live[0];
+        const [id, v] = live.find(([i]) => i === Chain.primary()) || live[0];
         cards.push({ label: "Total supply", value: fmt(v, 0), note: "Live on " + Chain.get(id).name });
       }
-      cards.push({ label: "Ticker", value: T }, { label: "Networks", value: String(Chain.list().length), note: Chain.list().map((n) => n.short).join(" · ") });
+      const nets = Chain.list();
+      cards.push({ label: "Ticker", value: T }, nets.length === 1
+        ? { label: "Network", value: nets[0].short, note: nets[0].type === "evm" ? "EVM · Chain ID " + nets[0].chainId : nets[0].name }
+        : { label: "Networks", value: String(nets.length), note: nets.map((n) => n.short).join(" · ") });
       CFG.tokenomics.filter((t) => t.value).forEach((t) => cards.push(t));
       $("#tokoCards").innerHTML = cards.map((c) => `<div class="toko-card"><span class="k">${esc(c.label)}</span><b>${esc(c.value)}</b>${c.note ? `<span class="muted small">${esc(c.note)}</span>` : ""}</div>`).join("");
     },
 
     renderGallery() {
-      $("#gallery-grid").innerHTML = GALLERY.map((g, i) => `<button class="g-item ${i === 0 ? "big" : ""}" data-action="view-img" data-i="${i}">
+      this.gallery = GALLERY.filter((g) => !(Chain.isSingle() && g.multiOnly));
+      $("#gallery-grid").innerHTML = this.gallery.map((g, i) => `<button class="g-item ${i === 0 ? "big" : ""}" data-action="view-img" data-i="${i}">
         <img src="${g.src}" alt="${esc(g.title)}" loading="lazy"><span>${esc(g.title)}</span></button>`).join("");
     },
 
@@ -130,8 +135,8 @@
       const n = Chain.get(netId);
       const wallets = Wallet.wallets(n.type);
       return `<h3 id="modalTitle">Connect wallet</h3>
-        <p class="sub">Choose a network, then your wallet.</p>
-        <div class="net-tabs">${Chain.list().map((x) => `<button class="ca-tab ${x.id === netId ? "active" : ""}" style="--net:${x.color}" data-action="pick-net" data-net="${x.id}"><img src="${x.icon}" alt="">${esc(x.short)}</button>`).join("")}</div>
+        <p class="sub">${Chain.list().length > 1 ? "Choose a network, then your wallet." : "Choose your wallet."}</p>
+        <div class="net-tabs" ${Chain.list().length > 1 ? "" : "hidden"}>${Chain.list().map((x) => `<button class="ca-tab ${x.id === netId ? "active" : ""}" style="--net:${x.color}" data-action="pick-net" data-net="${x.id}"><img src="${x.icon}" alt="">${esc(x.short)}</button>`).join("")}</div>
         <p class="muted small" style="margin:12px 0 0">${esc(n.name)} · ${n.type === "solana" ? "Solana wallets" : "EVM · Chain ID " + n.chainId + " · network is added/switched automatically"}</p>
         <div class="wallet-list">${wallets.map((w) => w.installed
           ? `<button class="wallet-opt" data-action="connect-wallet" data-net="${netId}" data-key="${esc(w.key)}"><img src="${esc(w.icon || n.icon)}" alt=""><b>${esc(w.name)}</b><span class="muted small">Detected</span></button>`
@@ -148,7 +153,7 @@
           <div class="param"><span>Address</span><code>${esc(short(w.address, 10, 8))}</code></div>
           <div class="param"><span>${T} balance</span><b>${w.balance !== null ? fmt(w.balance) + " " + T : (n && Chain.ca(n.id) ? "—" : "CA not set yet")}</b></div>
         </div>
-        ${w.type === "evm" ? `<p class="muted small" style="margin:16px 0 8px">Switch network</p><div class="net-tabs">${others.map((x) => `<button class="ca-tab" style="--net:${x.color}" data-action="switch-net" data-net="${x.id}"><img src="${x.icon}" alt="">${esc(x.short)}</button>`).join("")}</div>` : ""}
+        ${w.type === "evm" && others.length ? `<p class="muted small" style="margin:16px 0 8px">Switch network</p><div class="net-tabs">${others.map((x) => `<button class="ca-tab" style="--net:${x.color}" data-action="switch-net" data-net="${x.id}"><img src="${x.icon}" alt="">${esc(x.short)}</button>`).join("")}</div>` : ""}
         <div class="row-actions">
           <button class="btn btn-ghost btn-sm" data-action="copy" data-text="${esc(w.address)}">Copy address</button>
           ${n ? `<a class="btn btn-ghost btn-sm" href="${esc(Chain.explorerAddr(n.id, w.address))}" target="_blank" rel="noopener">Explorer</a>` : ""}
@@ -171,13 +176,13 @@
         case "copy-ca": { const ca = Chain.ca(this.caNet); return ca && this.copy(ca); }
         case "copy": return this.copy(el.dataset.text);
         case "open-buy": return this.openModal(this.buyModal());
-        case "open-connect": return this.openModal(this.connectModal(Wallet.state.network || CFG.primaryNetwork));
+        case "open-connect": return this.openModal(this.connectModal(Wallet.state.network || Chain.primary()));
         case "pick-net": return ($("#modalBody").innerHTML = this.connectModal(el.dataset.net));
         case "open-account": return this.openModal(this.accountModal());
         case "close-modal": return this.closeModal();
         case "disconnect": await Wallet.disconnect(); return this.closeModal();
         case "view-img": {
-          const g = GALLERY[+el.dataset.i];
+          const g = this.gallery[+el.dataset.i];
           return this.openModal(`<h3 id="modalTitle">${esc(g.title)}</h3><img class="lightbox" src="${g.src}" alt="${esc(g.title)}"><div class="row-actions"><a class="btn btn-primary btn-sm" href="${g.src}" download>Download</a></div>`, true);
         }
         case "connect-wallet": {
@@ -194,7 +199,19 @@
       }
     },
 
+    /** Apply single/multi layout: body[data-mode] + data-single* text/image variants. */
+    applyMode() {
+      const single = Chain.isSingle();
+      document.body.dataset.mode = single ? "single" : "multi";
+      $("#netKicker").textContent = single ? Chain.list()[0].name : Chain.list().map((n) => n.short).join(" · ");
+      if (!single) return;
+      document.querySelectorAll("[data-single]").forEach((el) => (el.textContent = el.dataset.single));
+      document.querySelectorAll("[data-single-html]").forEach((el) => (el.innerHTML = el.dataset.singleHtml));
+      document.querySelectorAll("[data-single-src]").forEach((el) => (el.src = el.dataset.singleSrc));
+    },
+
     init() {
+      this.applyMode();
       this.bindSocial();
       this.renderCA();
       this.renderChains();

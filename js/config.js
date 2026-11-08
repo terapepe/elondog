@@ -18,7 +18,15 @@ window.EDOG_CONFIG = {
     telegram: "", // e.g. "https://t.me/..."
   },
 
-  /** Network shown first + used for wallet login by default. */
+  /**
+   * Site mode:
+   *  "multi"  = 4 networks (Solana, Robinhood, Base, BSC)
+   *  "single" = 1 network only (singleNetwork), Robinhood-themed layout
+   */
+  mode: "multi",
+  singleNetwork: "robinhood",
+
+  /** Network shown first + used for wallet login by default (multi mode). */
   primaryNetwork: "solana",
 
   /**
@@ -28,7 +36,7 @@ window.EDOG_CONFIG = {
   networks: {
     solana: {
       name: "Solana",
-      short: "SOL",
+      short: "Solana",
       type: "solana",
       ca: "",
       rpcUrls: ["https://api.mainnet-beta.solana.com"],

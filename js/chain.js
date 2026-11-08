@@ -3,9 +3,13 @@
   const CFG = window.EDOG_CONFIG;
 
   const Chain = {
+    isSingle() { return CFG.mode === "single" && !!CFG.networks[CFG.singleNetwork]; },
+    primary() { return Chain.isSingle() ? CFG.singleNetwork : CFG.primaryNetwork; },
+    /** Active networks for the current mode (single → 1, multi → all). */
     list() {
-      const p = CFG.primaryNetwork;
+      const p = Chain.primary();
       return Object.entries(CFG.networks).map(([id, n]) => ({ id, ...n }))
+        .filter((n) => !Chain.isSingle() || n.id === p)
         .sort((a, b) => (b.id === p) - (a.id === p));
     },
     get(id) { const n = CFG.networks[id]; return n ? { id, ...n } : null; },

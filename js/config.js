@@ -18,8 +18,8 @@ window.EDOG_CONFIG = {
    *  "single" → chỉ hiển thị mạng `singleNetwork` (solana | robinhood | base | bsc),
    *             giao diện + nội dung lấy theo networks.<id>.theme / text.single
    */
-  mode: "multi",
-  singleNetwork: "base",
+  mode: "single",
+  singleNetwork: "solana",
 
   /** CA: Robinhood, Base, BSC dùng chung `evm`; Solana dùng `sol`. "" = Coming soon */
   token: {

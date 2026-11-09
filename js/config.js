@@ -8,29 +8,25 @@ window.EDOG_CONFIG = {
   },
 
   social: {
-    x: "https://x.com/ElonDog_Xyz",
-    xHandle: "@ElonDog_Xyz",
+    x: "https://x.com/cb_doge",
+    xHandle: "@cb_doge",
     telegram: "",
   },
 
   /**
-   *  "multi"  → luôn hiển thị đủ 4 mạng: Solana, Robinhood, Base, BSC
-   *  "single" → chỉ hiển thị mạng `singleNetwork` (solana | robinhood | base | bsc),
-   *             giao diện + nội dung lấy theo networks.<id>.theme / text.single
+   *  "multi"  → 
+   *  "single" → (solana | robinhood | base | bsc),
    */
-  mode: "single",
+  mode: "multi",
   singleNetwork: "solana",
 
-  /** CA: Robinhood, Base, BSC dùng chung `evm`; Solana dùng `sol`. "" = Coming soon */
   token: {
     evm: "",
     sol: "",
   },
 
-  /** Tab mở đầu tiên ở chế độ multi */
   primaryNetwork: "solana",
 
-  /** Theme chế độ multi. accent = màu chính, accent2 = màu gradient, ink = chữ trên nền accent, kicker = màu tiêu đề nhỏ, bg1/bg2 = 2 vầng sáng nền */
   theme: { accent: "#ffc83d", accent2: "#ff8a1f", ink: "#2a1600", kicker: "#5ee7ff", bg1: "#22307a", bg2: "#3a1d5e" },
 
   networks: {
@@ -150,7 +146,6 @@ window.EDOG_CONFIG = {
     },
   },
 
-  /** Tokenomics shown as cards. Leave value "" to hide a card. Total supply is read on-chain. */
   tokenomics: [
     { label: "Buy tax", value: "" },
     { label: "Sell tax", value: "" },

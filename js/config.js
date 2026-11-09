@@ -19,7 +19,7 @@ window.EDOG_CONFIG = {
    *             giao diện + nội dung lấy theo networks.<id>.theme / text.single
    */
   mode: "multi",
-  singleNetwork: "robinhood",
+  singleNetwork: "base",
 
   /** CA: Robinhood, Base, BSC dùng chung `evm`; Solana dùng `sol`. "" = Coming soon */
   token: {

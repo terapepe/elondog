@@ -5,7 +5,7 @@
   const Chain = {
     isSingle() { return CFG.mode === "single" && !!CFG.networks[CFG.singleNetwork]; },
     primary() { return Chain.isSingle() ? CFG.singleNetwork : CFG.primaryNetwork; },
-    /** Active networks for the current mode (single → 1, multi → all). */
+    /** Active networks for the current mode (single → 1, multi → all 4). */
     list() {
       const p = Chain.primary();
       return Object.entries(CFG.networks).map(([id, n]) => ({ id, ...n }))
@@ -20,7 +20,6 @@
 
     explorerToken(id) { const n = CFG.networks[id], a = Chain.ca(id); return n && a ? n.explorer + a : ""; },
     explorerAddr(id, addr) { const n = CFG.networks[id]; return n && addr ? n.explorerAddr + addr : ""; },
-    buyUrl(id) { const n = CFG.networks[id], a = Chain.ca(id); return n && a ? n.buyUrl.replace("{ca}", a) : ""; },
     chartUrl(id) { const n = CFG.networks[id], a = Chain.ca(id); return n && a && n.dexscreener ? `https://dexscreener.com/${n.dexscreener}/${a}` : ""; },
 
     async rpc(id, method, params) {

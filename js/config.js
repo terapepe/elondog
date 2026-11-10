@@ -21,8 +21,8 @@ window.EDOG_CONFIG = {
   singleNetwork: "solana",
 
   token: {
-    evm: "0x97117e89a9045bfd3e87cB9C6d556B93227276EA",
-    sol: "yybQ8LuJZQHr22AB6nrpLLAZos5UVBAUc2Q62acV6ea",
+    evm: "",
+    sol: "",
   },
 
   primaryNetwork: "solana",

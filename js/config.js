@@ -1,6 +1,6 @@
 window.EDOG_CONFIG = {
   project: {
-    name: "ELON DOG",
+    name: "ELONDOG",
     ticker: "$EDOG",
     symbol: "EDOG",
     tagline: "The goodest boy in the galaxy.",
@@ -21,7 +21,7 @@ window.EDOG_CONFIG = {
   singleNetwork: "robinhood",
 
   token: {
-    evm: "0x4c1ce914648ea4c1aeaebfb4a1022ecc0b26eb8c",
+    evm: "0x1359804eb8132479cfd14dacfc281f9e4f26e755",
     sol: "",
   },
 

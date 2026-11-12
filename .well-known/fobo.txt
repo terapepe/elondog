@@ -1,1 +1,1 @@
-fobo-verify=c12246ee2460fb02
+fobo-verify=230ed8b39144b55a

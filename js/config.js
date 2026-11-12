@@ -18,7 +18,7 @@ window.EDOG_CONFIG = {
    *  "single" → (solana | robinhood | base | bsc),
    */
   mode: "single",
-  singleNetwork: "solana",
+  singleNetwork: "robinhood",
 
   token: {
     evm: "",

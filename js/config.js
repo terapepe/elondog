@@ -10,7 +10,7 @@ window.EDOG_CONFIG = {
   social: {
     x: "https://x.com/cb_doge",
     xHandle: "@cb_doge",
-    telegram: "",
+    telegram: "cb_doge",
   },
 
   /**

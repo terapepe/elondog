@@ -89,7 +89,7 @@
         const ca = Chain.ca(n.id);
         return `<div class="chain-card" style="--net:${n.color}">
           <div class="chain-head"><img src="${n.icon}" alt=""><div><b>${esc(n.name)}</b><div class="muted small">${n.type === "solana" ? "SPL token" : "EVM · Chain ID " + n.chainId}</div></div></div>
-          <div class="kv"><span>CA</span>${ca ? `<code>${esc(short(ca, 8, 6))}</code><button class="link-btn" data-action="copy" data-text="${esc(ca)}">copy</button>` : `<span class="soon">Coming soon</span>`}</div>
+          <div class="kv kv-ca"><span>CA</span>${ca ? `<button class="link-btn" data-action="copy" data-text="${esc(ca)}">copy</button><code>${esc(ca)}</code>` : `<span class="soon">Coming soon</span>`}</div>
           <div class="kv"><span>Total supply</span><b data-supply="${n.id}">${ca ? "Loading…" : "—"}</b></div>
           <div class="chain-actions">
             ${ca ? `<button class="btn btn-primary btn-sm" data-action="copy" data-text="${esc(ca)}">Copy CA</button>` : `<button class="btn btn-ghost btn-sm" disabled>Copy CA</button>`}
@@ -136,7 +136,7 @@
         <p class="sub">Pick your chain and copy its contract address. Robinhood, Base and BSC share the same CA.</p>
         <div class="net-list">${Chain.list().map((n) => {
           const ca = Chain.ca(n.id);
-          return ca ? `<button class="net-opt" style="--net:${n.color}" data-action="copy" data-text="${esc(ca)}"><img src="${n.icon}" alt=""><div><div class="n">${esc(n.name)}</div><div class="d mono">${esc(short(ca, 8, 6))} · ${esc(n.dex)}</div></div><span class="go">Copy</span></button>`
+          return ca ? `<button class="net-opt" style="--net:${n.color}" data-action="copy" data-text="${esc(ca)}"><img src="${n.icon}" alt=""><div class="opt-body"><div class="n">${esc(n.name)} <span class="d">· ${esc(n.dex)}</span></div><div class="d mono ca-full">${esc(ca)}</div></div><span class="go">Copy</span></button>`
             : `<div class="net-opt off" style="--net:${n.color}"><img src="${n.icon}" alt=""><div><div class="n">${esc(n.name)}</div><div class="d">Coming soon</div></div></div>`;
         }).join("")}</div>
         <div class="notice">Always verify the CA on ${esc(CFG.social.xHandle)} before buying.</div>`;

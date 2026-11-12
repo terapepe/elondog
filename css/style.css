@@ -350,3 +350,11 @@ body[data-net="base"] .btn-buy, body[data-net="base"] .btn-primary, body[data-ne
   body[data-mode="single"] #chains { display: grid; grid-template-columns: 1fr minmax(0, 480px); gap: 64px; align-items: center; }
   body[data-mode="single"] #chains .section-head { margin: 0; }
 }
+/* Full CA everywhere */
+.kv-ca { flex-wrap: wrap; }
+.kv-ca code { flex-basis: 100%; word-break: break-all; font-size: 13px; line-height: 1.5; }
+.opt-body { min-width: 0; flex: 1; }
+.ca-full { word-break: break-all; }
+/* Keep a 42-char EVM CA on one line on phones (mono ≈ 0.6em/char) */
+.ca-value { font-size: min(14px, calc((100vw - 110px) / 25.5)); letter-spacing: -.01em; }
+.kv-ca code { font-size: min(13px, calc((100vw - 84px) / 25.5)); letter-spacing: -.01em; }

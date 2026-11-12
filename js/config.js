@@ -10,19 +10,19 @@ window.EDOG_CONFIG = {
   social: {
     x: "https://x.com/cb_doge",
     xHandle: "@cb_doge",
-    telegram: "cb_doge",
+    telegram: "https://t.me/cb_doge",
   },
 
   /**
    *  "multi"  → 
    *  "single" → (solana | robinhood | base | bsc),
    */
-  mode: "multi",
+  mode: "single",
   singleNetwork: "solana",
 
   token: {
-    evm: "0x1F67537fEB948Ba4e66B1f018Af0bf7F87a806Ea",
-    sol: "9KKpGfCbb7FMegC4NfUN6AuXDjySbPRTP9Wy4LPph6ea",
+    evm: "",
+    sol: "",
   },
 
   primaryNetwork: "solana",

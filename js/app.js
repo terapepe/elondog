@@ -125,7 +125,8 @@
 
     renderGallery() {
       this.gallery = GALLERY.filter((g) => !(Chain.isSingle() && g.multiOnly));
-      $("#gallery-grid").innerHTML = this.gallery.map((g, i) => `<button class="g-item ${i === 0 ? "big" : ""}" data-action="view-img" data-i="${i}">
+      const last = this.gallery.length - 1, fillLast = (last + 4) % 4 === 3; // big tile = 4 cells; widen last tile to close a 1-cell gap
+      $("#gallery-grid").innerHTML = this.gallery.map((g, i) => `<button class="g-item ${i === 0 ? "big" : ""} ${i === last && fillLast ? "wide" : ""}" data-action="view-img" data-i="${i}">
         <img src="${g.src}" alt="${esc(g.title)}" loading="lazy"><span>${esc(g.title)}</span></button>`).join("");
     },
 

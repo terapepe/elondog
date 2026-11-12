@@ -25,6 +25,16 @@
     { src: "assets/art/spacewalk.svg", title: "Spacewalk" },
     { src: "assets/art/hodl-nap.svg", title: "Just HODL" },
     { src: "assets/art/portrait.svg", title: "Portrait" },
+    { src: "assets/gallery/elon-dog-01.webp", title: "Best buddies" },
+    { src: "assets/gallery/elon-dog-02.webp", title: "Happiness" },
+    { src: "assets/gallery/elon-dog-03.webp", title: "Dog person" },
+    { src: "assets/gallery/elon-dog-04.webp", title: "X friends" },
+    { src: "assets/gallery/elon-dog-05.webp", title: "Hoodie doge" },
+    { src: "assets/gallery/elon-dog-06.webp", title: "Mars guards" },
+    { src: "assets/gallery/elon-dog-07.webp", title: "DOGE office" },
+    { src: "assets/gallery/elon-dog-08.webp", title: "A legion of doges" },
+    { src: "assets/gallery/elon-dog-09.webp", title: "LFG" },
+    { src: "assets/gallery/elon-dog-10.webp", title: "Official mascot" },
   ];
 
   const App = {

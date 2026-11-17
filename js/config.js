@@ -1,6 +1,6 @@
 window.EDOG_CONFIG = {
   project: {
-    name: "ELONDOG",
+    name: "ELONDOG Robinhood",
     ticker: "$EDOG",
     symbol: "EDOG",
     tagline: "The goodest boy in the galaxy.",

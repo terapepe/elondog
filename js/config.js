@@ -8,15 +8,11 @@ window.EDOG_CONFIG = {
   },
 
   social: {
-    x: "https://x.com/cb_doge",
-    xHandle: "@cb_doge",
-    telegram: "https://t.me/cb_doge",
+    x: "https://x.com/_ELONDOG",
+    xHandle: "@_ELONDOG",
+    telegram: "",
   },
 
-  /**
-   *  "multi"  → 
-   *  "single" → (solana | robinhood | base | bsc),
-   */
   mode: "single",
   singleNetwork: "robinhood",
 
